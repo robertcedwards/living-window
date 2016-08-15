@@ -1,0 +1,16 @@
+body {
+  background: #111;
+  margin: 0;
+}
+
+img {
+  display: block;
+  width: 200%;
+  
+}
+
+.scene {
+  width: 2500px;
+  margin: 0 auto;
+  padding: 0;
+}

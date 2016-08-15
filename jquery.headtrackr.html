@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Parallax.js | jQuery Example</title>
+
+	<!-- Behavioral Meta Data -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+
+</head>
+<body>
+
+	<div id="container" class="container">
+		<ul id="scene" class="scene" data-headtrackr="true">
+			<li class="layer" data-depth="1"><img src="images/layer1.jpg"></li>
+		</ul>
+	</div>
+
+	<!-- Scripts -->
+	<script src="scripts/jquery.js"></script>
+	<!--<script src="../deploy/headtrackr.min.js"></script>-->
+	<script src="../deploy/jquery.parallax.js"></script>
+	<script>
+
+	// Yep, that's it!
+	$('#scene').parallax({
+            headtrackr:true,
+            headtrackrPreferDeviceMotion:false,//by default at true - forcing at false for the demo
+            scalarX: 1.0,
+            scalarY: 1.0,
+            headtrackrDisplayVideo:false,
+            headtrackrDebugView: false,
+            invertX:false,
+            invertY:false,
+            headtrackrScriptLocation: "../deploy/headtrackr.min.js",
+            headtrackrOnBeforeCameraAccess: function(){
+              console.log('Trying to access to your webcam - this is where you could display a "please allow your webcam" message for example');
+            },
+            headtrackrOnCameraFound: function(){
+              var headtrackerMessageDiv = document.getElementById('headtrackerMessageDiv');
+              //at this time, you're sure the user clicked on "allow" and the webcam is rolling (you can override the inline styles of the headtrackr div message)
+              headtrackerMessageDiv.style.top = "20%";
+            }
+//            ,headtrackrNoGetUserMediaCallback : function(){
+//                //you can do anything here to inform your user (this will override the ugly warning message I made ;-) )
+//                console.log('no getUserMedia ... (special callback)');
+//            }
+        });
+
+	</script>
+
+</body>
+</html>
